@@ -1,9 +1,9 @@
-# coding_challenges
-This Repository is created for ideally solving coding challenges from different sites like edabit.com
+This Repository is created for ideally posting coding challenges I solved from different sites.
+
 This file in this Repo has 
-  --> DATE  E.g SUNDAY, 27  NOV 2022
-  --> QUESTIONS (For that specific date) 
-  --> SOLUTIONS (To the questions)
+    1. --> DATE  E.g SUNDAY, 27  NOV 2022
+    2. --> QUESTIONS (For that specific date) 
+    3. --> SOLUTIONS (To the questions)
   
 How to use it
   1. Copy a specific QUESTION form the e.g QUESTION 1
