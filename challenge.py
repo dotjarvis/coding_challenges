@@ -1,3 +1,4 @@
+# SUNDAY, 27  NOV 2022
 
 # # QUESTION 1
 # # Write a function that stutters a word as if someone is struggling to read it.
@@ -113,8 +114,10 @@
 # print(damage(100, 1, "minute"))
 # print(damage(2, 100, "hour"))
 # print(damage(2, -100, "hour"))
-#
-#
+
+
+# MONDAY 28, NOV 2022
+
 # # QUESTION 1
 # # Create a function that takes a number num and returns its length.
 # # use of the len() function is prohibited.
@@ -256,3 +259,166 @@
 # print(find_highest([-1, 3, 5, 6, 99, 12, 2]))
 # print(find_highest([0, 12, 4, 87]))
 # print(find_highest([8]))
+
+# TUESDAY 29 NOV 2022
+
+# QUESTION 1
+# Write a function that takes coordinates of two points on a two-dimensional plane
+# and returns the length of the line segment connecting those two points.
+# line_length([15, 7], [22, 11]) ➞ 8.06
+# line_length([0, 0], [0, 0]) ➞ 0
+# line_length([0, 0], [1, 1]) ➞ 1.41
+
+# # SOLUTION
+# import math
+#
+#
+# def line_length(point1, point2):
+#     length = abs(point1[0] - point2[0])
+#     width = abs(point1[1] - point2[1])
+#
+#     return math.sqrt(length ** 2 + width ** 2)
+#
+#
+# print(line_length([15, 7], [22, 11]))
+# print(line_length([0, 0], [0, 0]))
+# print(line_length([0, 0], [1, 1]))
+
+
+# QUESTION 2
+# Create a function that takes two number strings and returns their sum as a string.
+# add("111", "111") ➞ "222"
+# add("10", "80") ➞ "90"
+# add("", "20") ➞ "Invalid Operation"
+# If any input is "" or None, return "Invalid Operation".
+
+# # SOLUTION
+#
+# def add(first_number, second_number):
+#     if not bool(first_number) or not bool(second_number):
+#         return 'Invalid Operation'
+#     else:
+#         output = int(first_number) + int(second_number)
+#         return str(output)
+#
+#
+# print(add("111", "111"))
+# print(add("10", "80"))
+# print(add("", "20"))
+# print(add("", ""))
+
+
+# QUESTION 3
+# Create a function that takes the number of daily average recovered cases recovers,
+# daily average new_cases, current active_cases, and returns the number of days
+# it will take to reach zero cases.
+# end_corona(4000, 2000, 77000) ➞ 21
+# end_corona(3000, 2000, 50699) ➞ 19
+# end_corona(30000, 25000, 390205) ➞ 15
+
+# # SOLUTION
+#
+# def end_corona(recovers, new_cases, current_cases):
+#     total_cases = new_cases + current_cases
+#     days = 0
+#     while total_cases > 0:
+#         days += 1
+#         total_cases -= recovers
+#     return days+1
+#
+#
+# print(end_corona(4000, 2000, 77000))
+# print(end_corona(3000, 2000, 50699))
+# print(end_corona(30000, 25000, 390205))
+
+# QUESTION 4
+# Write a program that takes a temperature input in celsius
+# and converts it to Fahrenheit and Kelvin. Return the converted temperature values in a list.
+# Return calculated temperatures up to two decimal places.
+# Return "Invalid" if K is less than 0.
+# The formula to calculate the temperature in Fahrenheit from Celsius is:
+# F = C*9/5 +32
+# The formula to calculate the temperature in Kelvin from Celsius is:
+# K = C + 273.15
+# temp_conversion(0) ➞ [32, 273.15]
+# # 0°C is equal to 32°F and 273.15 K.
+# temp_conversion(100) ➞ [212, 373.15]
+# temp_conversion(-10) ➞ [14, 263.15]
+# temp_conversion(300.4) ➞ [572.72, 573.55]
+
+# # SOLUTION
+# def temp_conversion(temp):
+#     to_fahrenheit = temp * 9 / 5 + 32
+#     to_kelvin = temp + 273.15
+#     if to_kelvin<0:
+#         return 'Invalid'
+#     return f'[{round(to_fahrenheit,2)},{round(to_kelvin,2)}]'
+#
+#
+# print(temp_conversion(100))
+# print(temp_conversion(-10))
+# print(temp_conversion(300.4))
+
+# QUESTION 5
+# Given two unique integer lists a and b, and an integer target value v,
+# create a function to determine whether there is a pair of numbers that
+# add up to the target value v, where one number comes from one list a
+# and the other comes from the second list b.
+# Return True if there is a pair that adds up to the target value and False otherwise.
+# sum_of_two([1, 2], [4, 5, 6], 5) ➞ True
+# sum_of_two([1, 2], [4, 5, 6], 8) ➞ True
+# sum_of_two([1, 2], [4, 5, 6], 3) ➞ False
+# sum_of_two([1, 2], [4, 5, 6], 9) ➞ False
+
+# # SOLUTION
+#
+# def sum_of_two(a, b, v):
+#     decision = False
+#     for number_in_a in a:
+#         for number_in_b in b:
+#             if number_in_a + number_in_b == v:
+#                 decision = True
+#     return decision
+#
+#
+# print(sum_of_two([1, 2], [4, 5, 6], 5))
+# print(sum_of_two([1, 2], [4, 5, 6], 8))
+# print(sum_of_two([1, 2], [4, 5, 6], 3))
+# print(sum_of_two([1, 2], [4, 5, 6], 9))
+
+
+# QUESTION 6
+# Create a function to test if a string is a valid pin or not.
+# A valid pin has: Exactly 4 or 6 characters.
+# Only numerical characters (0-9).
+# No whitespace.
+# Empty strings should return False when tested.
+# Examples
+# valid("1234") ➞ True
+# valid("45135") ➞ False
+# valid("89abc1") ➞ False
+# valid("900876") ➞ True
+# valid(" 4983") ➞ False
+
+# # SOLUTION
+# def valid(txt):
+#     try:
+#         if bool(txt) and len(txt) == 6 or len(txt) == 4:
+#             if txt[0] == ' ' or txt[-1] == ' ':
+#                 return False
+#             else:
+#                 int(txt)
+#                 return True
+#         else:
+#             return False
+#     except ValueError:
+#         return False
+#
+#
+# print(valid("1234"))
+# print(valid("45135"))
+# print(valid("89abc1"))
+# print(valid("900876"))
+# print(valid(" 4983"))
+# print(valid(" "))
+# print(valid(""))
