@@ -422,3 +422,164 @@
 # print(valid(" 4983"))
 # print(valid(" "))
 # print(valid(""))
+
+
+# WEDNESDAY 30 NOV 2022
+
+# QUESTION 1
+# Create a function to perform basic arithmetic operations that includes
+# addition, subtraction, multiplication and division on a string number
+# (e.g. "12 + 24" or "23 - 21" or "12 // 12" or "12 * 21").
+# Here, we have 1 followed by a space, operator followed by another space and 2.
+# For the challenge, we are going to have only two numbers between 1 valid operator.
+# The return value should be a number.
+#
+# eval() is not allowed. In case of division, whenever the second number equals "0" return -1.
+# For example:
+# "15 // 0"  ➞ -1
+# Examples
+# arithmetic_operation("12 + 12") ➞ 24 // 12 + 12 = 24
+# arithmetic_operation("12 - 12") ➞ 24 // 12 - 12 = 0
+# arithmetic_operation("12 * 12") ➞ 144 // 12 * 12 = 144
+# arithmetic_operation("12 // 0") ➞ -1 // 12 / 0 = -1
+
+# # SOLUTION
+# def arithmetic_operation(operation):
+#     first_num, operator, second_num = operation.split(' ')
+#     if second_num == '0':
+#         return -1
+#
+#     if operator == '+':
+#         return int(first_num) + int(second_num)
+#     elif operator == '-':
+#         return int(first_num) - int(second_num)
+#     elif operator == '*':
+#         return int(first_num) * int(second_num)
+#     elif operator == '//':
+#         return int(first_num) // int(second_num)
+#
+#
+# print(arithmetic_operation("12 + 12"))
+# print(arithmetic_operation("12 - 12"))
+# print(arithmetic_operation("12 * 12"))
+# print(arithmetic_operation("12 // 0"))
+
+
+# QUESTION 2
+# When resistors are connected together in series,
+# the same current passes through each resistor in the chain and the total resistance,
+# RT, of the circuit must be equal to the sum of all the individual resistors added together.
+# That is:
+# RT = R1 + R2 + R3 ...
+# Create a function that takes an array of values resistance that are connected in series,
+# and calculates the total resistance of the circuit in ohms.
+# The ohm is the standard unit of electrical resistance in the International System of Units ( SI ).
+# Notice the singular ohm for values <= 1.
+# Examples
+# series_resistance([1, 5, 6, 3]) ➞ "15 ohms"
+# series_resistance([16, 3.5, 6]) ➞ "25.5 ohms"
+# series_resistance([0.5, 0.5]) ➞ "1.0 ohm"
+
+# # SOLUTION
+# def series_resistance(list):
+#     total_resistors = 0
+#     for resistor in list:
+#         total_resistors += resistor
+#     return f"{total_resistors} {'Ohm' if total_resistors <= 1 else 'Ohms'}"
+#
+#
+# print(series_resistance([1, 5, 6, 3]))
+# print(series_resistance([16, 3.5, 6]))
+# print(series_resistance([0.5, 0.5]))
+
+
+# QUESTION 3
+# This challenge is based on the classic video game "Snake".
+# Assume the game screen is an n * n square, and the snake starts the game with length 1
+# (i.e. just the head) positioned in the top left corner.
+# For example, if n = 7 the game looks something like this:
+# Oops no image
+# In this version of the game, the length of the snake doubles each time it eats food
+# (e.g. if the length is 4, after eating it becomes 8).
+# Create a function that takes the side n of the game screen and
+# returns the number of times the snake can eat before it runs out of space in the game screen.
+# Examples
+# snake_fill(3) ➞ 3
+# snake_fill(6) ➞ 5
+# snake_fill(24) ➞ 9
+
+# # SOLUTION
+# # 1 -> 2 -> 4 -> 8 -> 16 -> 32 -> 64 -> 128 ->256 -> 512 -> 1024 ...
+#
+# def snake_fill(length):
+#     spaces = length * length
+#     snake_length = 1
+#     number_of_times = 0
+#     while spaces > snake_length:
+#         snake_length *= 2
+#         number_of_times += 1
+#     return number_of_times - 1
+#
+#
+# print(snake_fill(3))
+# print(snake_fill(6))
+# print(snake_fill(24))
+
+
+# QUESTION 4
+# Create a function to check if a candidate is qualified in an
+# imaginary coding interview of an imaginary tech startup.
+#
+# The criteria for a candidate to be qualified in the coding interview is:
+#
+# The candidate should have complete all the questions.
+# The maximum time given to complete the interview is 120 minutes.
+# The maximum time given for very easy questions is 5 minutes each.
+# The maximum time given for easy questions is 10 minutes each.
+# The maximum time given for medium questions is 15 minutes each.
+# The maximum time given for hard questions is 20 minutes each.
+# If all the above conditions are satisfied, return "qualified", else return "disqualified".
+#
+# You will be given a list of time taken by a candidate to solve a
+# particular question and the total time taken by the candidate to complete the interview.
+#
+# Given a list , in a true condition will always be in the format
+# [very easy, very easy, easy, easy, medium, medium, hard, hard].
+# The maximum time to complete the interview includes a buffer time of 20 minutes.
+#
+# Examples
+# interview([5, 5, 10, 10, 15, 15, 20, 20], 120) ➞ "qualified"
+# interview([2, 3, 8, 6, 5, 12, 10, 18], 64) ➞  "qualified"
+# interview([5, 5, 10, 10, 25, 15, 20, 20], 120) ➞ "disqualified"
+# # Exceeded the time limit for a medium question.
+# interview([5, 5, 10, 10, 15, 15, 20], 120) ➞ "disqualified"
+# # Did not complete all the questions.
+# interview([5, 5, 10, 10, 15, 15, 20, 20], 130) ➞ "disqualified"
+# # Solved all the questions in their respected time limits but exceeded the total time limit of the interview.
+
+# # SOLUTION
+# def interview(lst, tot):
+#     v_easy = lst[0:2]
+#     easy = lst[2:4]
+#     medium = lst[4:6]
+#     hard = lst[6:8]
+#
+#     if len(lst) < 8 or tot > 120:
+#         return 'Disqualified'
+#     if v_easy[0] > 5 or v_easy[1] > 5:
+#         return 'Disqualified'
+#     if easy[0] > 10 or easy[1] > 10:
+#         return 'Disqualified'
+#     if medium[0] > 15 or medium[1] > 15:
+#         return 'Disqualified'
+#     if hard[0] > 20 or hard[1] > 20:
+#         return 'Disqualified'
+#
+#     return 'qualified'
+#
+#
+# print(interview([5, 5, 10, 10, 15, 15, 20, 20], 120))
+# print(interview([2, 3, 8, 6, 5, 12, 10, 18], 64))
+# print(interview([5, 5, 10, 10, 25, 15, 20, 20], 120))
+# print(interview([5, 5, 10, 10, 15, 15, 20], 120))
+# print(interview([5, 5, 10, 10, 15, 15, 20, 20], 130))
