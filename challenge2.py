@@ -169,3 +169,194 @@
 # print(show_the_love([16, 10, 8]))
 # print(show_the_love([2, 100]))
 # print(show_the_love([10, 20, 40, 80, 100]))
+
+
+# SUN, DEC 4 2022
+
+
+# QUESTION 1
+# Create a function that creates a box based on dimension n.
+# Examples
+# make_box(5) ➞ [
+#   "#####",
+#   "#   #",
+#   "#   #",
+#   "#   #",
+#   "#####"
+# ]
+# make_box(3) ➞ [
+#   "###",
+#   "# #",
+#   "###"
+# ]
+# make_box(2) ➞ [
+#   "##",
+#   "##"
+# ]
+# make_box(1) ➞ [
+#   "#"
+# ]
+
+# # SOLUTION
+# def make_box(n):
+#     for value in range(n):
+#         if value == 0 or value == n - 1:
+#             print('#' * n)
+#         else:
+#             print(f'#{(n - 2) * " "}#')
+#
+#     return ''
+#
+#
+# print(make_box(5))
+# print(make_box(3))
+# print(make_box(2))
+# print(make_box(1))
+
+
+
+# QUESTION 2
+# Given a list of words in the singular form, return a set of those words in the plural form
+# if they appear more than once in the list.
+# Examples
+# pluralize(["cow", "pig", "cow", "cow"]) ➞ { "cows", "pig" }
+# pluralize(["table", "table", "table"]) ➞ { "tables" }
+# pluralize(["chair", "pencil", "arm"]) ➞ { "chair", "pencil", "arm" }
+
+# # SOLUTION
+# def pluralize(lst):
+#     new_array = []
+#     for word in lst:
+#         if lst.count(word) > 1 and not word + 's' in new_array:
+#             new_array.append(word + 's')
+#         elif lst.count(word) == 1:
+#             new_array.append(word)
+#     return new_array
+#
+#
+# print(pluralize(["cow", "pig", "cow", "cow"]))
+# print(pluralize(["table", "table", "table"]))
+# print(pluralize(["chair", "pencil", "arm"]))
+
+# QUESTION 3
+# Create a function that takes an angle in radians and
+# returns the corresponding angle in degrees rounded to one decimal place.
+# Examples
+# radians_to_degrees(1) ➞ 57.3
+# radians_to_degrees(20) ➞ 1145.9
+# radians_to_degrees(50) ➞ 2864.8
+# Notes
+# The number π can be loaded from the math module with from math import pi.
+
+# # SOLUTION
+# from math import pi
+#
+#
+# def radians_to_degrees(rad):
+#     return round(rad * 180 / pi, 1)
+#
+#
+# print(radians_to_degrees(1))
+# print(radians_to_degrees(20))
+# print(radians_to_degrees(50))
+
+
+
+
+# QUESTION 4
+# Create a function that takes a string's characters as ASCII and
+# returns each character's hexadecimal value as a string.
+# Examples
+# convert_to_hex("hello world") ➞ "68 65 6c 6c 6f 20 77 6f 72 6c 64"
+# convert_to_hex("Big Boi") ➞ "42 69 67 20 42 6f 69"
+# convert_to_hex("Marty Poppinson") ➞ "4d 61 72 74 79 20 50 6f 70 70 69 6e 73 6f 6e"
+
+# # SOLUTION
+# def convert_to_hex(txt):
+#     hexa = ''
+#     for i in txt:
+#         int_value = ord(i)
+#         hexadecimal = hex(int_value).lstrip('0x').rstrip('L')
+#         hexa += hexadecimal
+#         hexa += ' '
+#     return hexa
+#
+#
+# print(convert_to_hex("hello world"))
+# print(convert_to_hex("Big Boi"))
+# print(convert_to_hex("Marty Poppinson"))
+
+
+
+
+#  QUESTION 5
+# Create a function that takes a string as an argument and returns the Morse code equivalent.
+# Examples
+# encode_morse("EDABBIT CHALLENGE") ➞ ". -.. .- -... -... .. -
+# -.-. .... .- .-.. .-.. . -. --. ."
+# encode_morse("HELP ME !") ➞ ".... . .-.. .--.   -- .   -.-.--"
+# This dictionary can be used for coding:
+# char_to_dots = {
+#   'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.',
+#   'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..',
+#   'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.',
+#   'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
+#   'Y': '-.--', 'Z': '--..', ' ': ' ', '0': '-----',
+#   '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....',
+#   '6': '-....', '7': '--...', '8': '---..', '9': '----.',
+#   '&': '.-...', "'": '.----.', '@': '.--.-.', ')': '-.--.-', '(': '-.--.',
+#   ':': '---...', ',': '--..--', '=': '-...-', '!': '-.-.--', '.': '.-.-.-',
+#   '-': '-....-', '+': '.-.-.', '"': '.-..-.', '?': '..--..', '/': '-..-.'
+# }
+
+# # SOLUTION
+# def encode_morse(message):
+#     encoded = ''
+#     char_to_dots = {
+#         'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.',
+#         'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..',
+#         'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.',
+#         'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
+#         'Y': '-.--', 'Z': '--..', ' ': ' ', '0': '-----',
+#         '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....',
+#         '6': '-....', '7': '--...', '8': '---..', '9': '----.',
+#         '&': '.-...', "'": '.----.', '@': '.--.-.', ')': '-.--.-', '(': '-.--.',
+#         ':': '---...', ',': '--..--', '=': '-...-', '!': '-.-.--', '.': '.-.-.-',
+#         '-': '-....-', '+': '.-.-.', '"': '.-..-.', '?': '..--..', '/': '-..-.'
+#     }
+#     for character in message.upper():
+#         encoded += char_to_dots[character]
+#         encoded += ' '
+#     return encoded
+#
+#
+# print(encode_morse("EDAbBIT CHALLENGE"))
+# print(encode_morse("HELP ME !"))
+# print(encode_morse("jArvis23+=12 "))
+
+
+
+# QUESTION 6
+# Create a function which concatenates the number 7 to the end of every chord in a list.
+# Ignore all chords which already end with 7.
+# Examples
+# jazzify(["G", "F", "C"]) ➞ ["G7", "F7", "C7"]
+# jazzify(["Dm", "G", "E", "A"]) ➞ ["Dm7", "G7", "E7", "A7"]
+# jazzify(["F7", "E7", "A7", "Ab7", "Gm7", "C7"]) ➞ ["F7", "E7", "A7", "Ab7", "Gm7", "C7"]
+# jazzify([]) ➞ []
+
+# # SOLUTION
+# def jazzify(lst):
+#     jazzified = []
+#     for value in lst:
+#         if value[-1] != '7':
+#             jazzified.append(value + '7')
+#         else:
+#             jazzified.append(value)
+#     return jazzified
+#
+#
+# print(jazzify(["G", "F", "C"]))
+# print(jazzify(["Dm", "G", "E", "A"]))
+# print(jazzify(["F7", "E7", "A7", "Ab7", "Gm7", "C7"]))
+# print(jazzify([]))
