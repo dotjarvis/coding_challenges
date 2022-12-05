@@ -214,7 +214,6 @@
 # print(make_box(1))
 
 
-
 # QUESTION 2
 # Given a list of words in the singular form, return a set of those words in the plural form
 # if they appear more than once in the list.
@@ -261,8 +260,6 @@
 # print(radians_to_degrees(50))
 
 
-
-
 # QUESTION 4
 # Create a function that takes a string's characters as ASCII and
 # returns each character's hexadecimal value as a string.
@@ -285,8 +282,6 @@
 # print(convert_to_hex("hello world"))
 # print(convert_to_hex("Big Boi"))
 # print(convert_to_hex("Marty Poppinson"))
-
-
 
 
 #  QUESTION 5
@@ -335,7 +330,6 @@
 # print(encode_morse("jArvis23+=12 "))
 
 
-
 # QUESTION 6
 # Create a function which concatenates the number 7 to the end of every chord in a list.
 # Ignore all chords which already end with 7.
@@ -360,3 +354,33 @@
 # print(jazzify(["Dm", "G", "E", "A"]))
 # print(jazzify(["F7", "E7", "A7", "Ab7", "Gm7", "C7"]))
 # print(jazzify([]))
+
+
+# MONDAY, 5 DECEMBER 2022
+
+# QUESTION 1
+
+# Someone has attempted to censor my strings by replacing every vowel with
+# a *, l*k* th*s. Luckily, I've been able to find the vowels that were removed.
+# Given a censored string and a string of the censored vowels, return the original uncensored string.
+# Example
+# uncensor("Wh*r* d*d my v*w*ls g*?", "eeioeo") ➞ "Where did my vowels go?"
+# uncensor("abcd", "") ➞ "abcd"
+# uncensor("*PP*RC*S*", "UEAE") ➞ "UPPERCASE"
+
+# SOLUTION
+def uncensor(txt, vowels):
+    for word in txt:
+        for vowel in vowels:
+            if word == '*':
+                word = vowel
+                vowels=vowels.lstrip(vowel)
+                # print(vowels)
+                # print(vowel)
+                break
+        print(word)
+
+
+print(uncensor("Wh*r* d*d my v*w*ls g*?", "eeioeo"))
+print(uncensor("abcd", ""))
+print(uncensor("*PP*RC*S*", "UEAE"))
