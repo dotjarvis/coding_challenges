@@ -368,19 +368,96 @@
 # uncensor("abcd", "") ➞ "abcd"
 # uncensor("*PP*RC*S*", "UEAE") ➞ "UPPERCASE"
 
-# SOLUTION
-def uncensor(txt, vowels):
-    for word in txt:
-        for vowel in vowels:
-            if word == '*':
-                word = vowel
-                vowels=vowels.lstrip(vowel)
-                # print(vowels)
-                # print(vowel)
-                break
-        print(word)
+# # SOLUTION
+# def uncensor(txt, vowels):
+#     for msg in txt:
+#         for vowel in vowels:
+#             word = txt
+#             another = word.replace('*', vowel, 1)
+#             print(vowel, vowels, another)
+#             vowels = vowels[1:]
+#             break
+#
+#
+# print(uncensor("Wh*r* d*d my v*w*ls g*?", "eeioeo"))
+# print(uncensor("abcd", ""))
+# print(uncensor("*PP*RC*S*", "UEAE"))
 
 
-print(uncensor("Wh*r* d*d my v*w*ls g*?", "eeioeo"))
-print(uncensor("abcd", ""))
-print(uncensor("*PP*RC*S*", "UEAE"))
+# THUR DEC, 8 2022
+
+# QUESTION 1
+# Luke Skywalker has family and friends. Help him remind them who is who.
+# Given a string with a name, return the relation of that person to Luke.
+# Person	        Relation
+# Darth Vader	    father
+# Leia	            sister
+# Han	            brother-in-law
+# R2D2	            droid
+# Examples
+# relation_to_luke("Darth Vader") ➞ "Luke, I am your father."
+# relation_to_luke("Leia") ➞ "Luke, I am your sister."
+# relation_to_luke("Han") ➞ "Luke, I am your brother in law."
+
+# # SOLUTION
+# def relation_to_luke(name):
+#     person_relation = {
+#         'Darth Vader': 'father',
+#         'Leia': 'sister',
+#         'Han': 'brother-in-law',
+#         'R2D2': 'droid',
+#     }
+#
+#     return f'Luke, I am your {person_relation.get(name, "UNKOWN")}'
+#
+#
+# print(relation_to_luke("Darth Vader"))
+# print(relation_to_luke("Leia"))
+# print(relation_to_luke("Han"))
+# print(relation_to_luke("Hussain"))
+
+
+# QUESTION 2
+# Create a function that takes a number as input and returns True
+# if the sum of its digits has the same parity as the entire number.
+# Otherwise, return False.
+# Examples
+# parity_analysis(243) ➞ True
+# # 243 is odd and so is 9 (2 + 4 + 3)
+# parity_analysis(12) ➞ False
+# # 12 is even but 3 is odd (1 + 2)
+# parity_analysis(3) ➞ True
+# # 3 is odd and 3 is odd and 3 is odd (3)
+
+# # SOLUTION
+# def parity_analysis(num):
+#     total_sum = 0
+#     for digit in str(num):
+#         total_sum += int(digit)
+#     if num % 2 == 0 and total_sum % 2 == 0:
+#         return True
+#     elif num % 2 == 1 and total_sum % 2 == 1:
+#         return True
+#     else:
+#         return False
+#
+#
+# print(parity_analysis(243))
+# print(parity_analysis(12))
+# print(parity_analysis(3))
+# print(parity_analysis(2003))
+
+
+# QUESTION 3
+# Write a function that returns True if two arrays, when combined, form a consecutive sequence.
+# A consecutive sequence is a sequence without any gaps in the integers,
+# e.g. 1, 2, 3, 4, 5 is a consecutive sequence, but 1, 2, 4, 5 is not.
+# Examples
+# consecutive_combo([7, 4, 5, 1], [2, 3, 6]) ➞ True
+# consecutive_combo([1, 4, 6, 5], [2, 7, 8, 9]) ➞ False
+# consecutive_combo([1, 4, 5, 6], [2, 3, 7, 8, 10]) ➞ False
+# consecutive_combo([44, 46], [45]) ➞ True
+
+# # SOLUTION
+# def consecutive_combo(lst1, lst2):
+    
