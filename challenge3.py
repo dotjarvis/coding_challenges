@@ -392,3 +392,154 @@
 #     [1, 1, 1, 0],
 #     [1, 1, 1, 1]
 # ]))
+
+
+# SATURDAY DEC, 10 2022
+
+
+# QUESTION 1
+
+
+# Given a name, return the letter with the highest index in alphabetical order,
+# with its corresponding index, in the form of a string.
+# You are prohibited to use max() nor is reassigning a value to the alphabet list allowed.
+# Examples
+# alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o",
+# "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+# alphabet_index("Flavio") ➞ "22v"
+# alphabet_index("Andrey") ➞ "25y"
+# alphabet_index("Oscar") ➞ "19s"
+# Notes
+# sorted() is not best practice.
+
+
+# # SOLUTION
+# def alphabet_index(string):
+#     alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u",
+#                 "v", "w", "x", "y", "z"]
+#     highest_index = 'a'
+#     for letter in string.lower():
+#         if letter > highest_index:
+#             highest_index = letter
+#
+#     return str(alphabet.index(highest_index) + 1) + highest_index
+#
+#
+# print(alphabet_index("Flavio"))
+# print(alphabet_index("Andrey"))
+# print(alphabet_index("Oscar"))
+
+# QUESTION 2
+
+
+# If a person traveled up a hill for 18mins at 20mph and
+# then traveled back down the same path at 60mph then their average speed traveled was 30mph.
+# Write a function that returns the average speed traveled given an uphill time,
+# uphill rate and a downhill rate. Uphill time is given in minutes.
+# Return the rate as an integer (mph). No rounding is necessary.
+# Examples
+# ave_spd(18, 20, 60) ➞ 30
+# ave_spd(30, 10, 30) ➞ 15
+# ave_spd(30, 8, 24) ➞ 12
+
+
+# SOLUTION
+# def ave_spd(up_time, up_spd, down_spd):
+#     distance = (up_time / 60) * up_spd
+#     down_time = distance / down_spd
+#     avg_speed = distance * 2 / ((up_time + down_time * 60) / 60)
+#     return int(avg_speed)
+#
+#
+# print(ave_spd(18, 20, 60))
+# print(ave_spd(30, 10, 30))
+# print(ave_spd(30, 8, 24))
+
+
+# QUESTION 3
+
+
+# Create a function that takes an integer n and returns the factorial of factorials.
+# See below examples for a better understanding:
+# Examples
+# fact_of_fact(4) ➞ 288
+# # 4! * 3! * 2! * 1! = 288
+# fact_of_fact(5) ➞ 34560
+# fact_of_fact(6) ➞ 24883200
+
+
+# # SOLUTION
+# def fact_of_fact(n):
+#     # 4 * 3 * 2 * 1 * 3 * 2 * 1 * 2 * 1 * 1 = 288
+#     total = 1
+#     for value in range(n + 1):
+#         if value != 0:
+#             for val in range(value + 1):
+#                 if val != 0:
+#                     total *= val
+#     return total
+#
+#
+# print(fact_of_fact(4))
+# print(fact_of_fact(5))
+# print(fact_of_fact(6))
+
+
+# QUESTION 4
+
+
+# Create a function that takes a number a and finds the missing exponent x
+# so that a when raised to the power of x is equal to b.
+# Examples
+# solve_for_exp(4, 1024) ➞ 5
+# solve_for_exp(2, 1024) ➞ 10
+# solve_for_exp(9, 3486784401) ➞ 10
+# Notes
+# a is raised to the power of what in order to equal b?
+
+# # SOLUTION
+# def solve_for_exp(a, b):
+#     n = 0
+#     while True:
+#         if a ** n == b:
+#             return n
+#         n += 1
+#
+#
+# print(solve_for_exp(4, 1024))
+# print(solve_for_exp(2, 1024))
+# print(solve_for_exp(9, 3486784401))
+
+
+# QUESTION 5
+
+
+# Create a function that returns the majority vote in a list.
+# A majority vote is an element that occurs > N/2 times in a list
+# (where N is the length of the list).
+# Examples
+# majority_vote(["A", "A", "B"]) ➞ "A"
+# majority_vote(["A", "A", "A", "B", "C", "A"]) ➞ "A"
+# majority_vote(["A", "B", "B", "A", "C", "C"]) ➞ None
+# Notes
+# The frequency of the majority element must be strictly greater than 1/2.
+# If there is no majority element, return None.
+# If the list is empty, return None.
+
+# # SOLUTION
+# def majority_vote(lst):
+#     first_iteration = lst.count(lst[0])
+#     output = None
+#     for vote in lst:
+#         if lst.count(vote) > first_iteration:
+#             first_iteration = lst.count(vote)
+#             output = vote
+#             # print(lst.count(vote))
+#         else:
+#             output=lst[0]
+#     return output
+# 
+# print(majority_vote(["A", "A", "B"]))
+# print(majority_vote(["A", "A", "A", "B", "C", "A"]))
+# print(majority_vote(["A", "B", "B", "A", "C", "C"]))
+# print(majority_vote(["D", "B", "B", "A", "C", "C"]))
