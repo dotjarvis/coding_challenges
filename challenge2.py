@@ -370,15 +370,13 @@
 
 # # SOLUTION
 # def uncensor(txt, vowels):
-#     for msg in txt:
-#         for vowel in vowels:
-#             word = txt
-#             another = word.replace('*', vowel, 1)
-#             print(vowel, vowels, another)
-#             vowels = vowels[1:]
-#             break
-#
-#
+#     if vowels == '' or vowels == ' ':
+#         return txt
+#     for vowel in vowels:
+#         txt = txt.replace('*', vowel, 1)
+#     return txt
+
+
 # print(uncensor("Wh*r* d*d my v*w*ls g*?", "eeioeo"))
 # print(uncensor("abcd", ""))
 # print(uncensor("*PP*RC*S*", "UEAE"))
