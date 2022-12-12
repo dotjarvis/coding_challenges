@@ -526,7 +526,7 @@
 # If there is no majority element, return None.
 # If the list is empty, return None.
 
-# # SOLUTION
+# SOLUTION
 # def majority_vote(lst):
 #     first_iteration = lst.count(lst[0])
 #     output = None
@@ -534,12 +534,45 @@
 #         if lst.count(vote) > first_iteration:
 #             first_iteration = lst.count(vote)
 #             output = vote
-#             # print(lst.count(vote))
 #         else:
 #             output=lst[0]
 #     return output
-# 
+#
 # print(majority_vote(["A", "A", "B"]))
 # print(majority_vote(["A", "A", "A", "B", "C", "A"]))
 # print(majority_vote(["A", "B", "B", "A", "C", "C"]))
 # print(majority_vote(["D", "B", "B", "A", "C", "C"]))
+
+
+# MON DEC 12, 2022
+
+
+# QUESTION 1
+
+
+# Create a function that takes a string txt and censors any word from a given list lst.
+# The text removed must be replaced by the given character char.
+# Examples
+# censor_string("Today is a Wednesday!", ["Today", "a"], "-") ➞ "----- is - Wednesday!"
+# censor_string("The cow jumped over the moon.", ["cow", "over"], "*"), "The *** jumped **** the moon.")
+# censor_string("Why did the chicken cross the road?", ["Did", "chicken", "road"], "*")
+# ➞ "Why *** the ******* cross the ****?"
+
+
+# # SOLUTION
+# def censor_string(txt, lst, char):
+#     censored_txt = ''
+#     for word in txt.split(' '):
+#         if word.lower() in lst:
+#             censored_txt += char * len(word.lower())
+#             censored_txt += ' '
+#         else:
+#             censored_txt += word
+#             censored_txt += ' '
+#
+#     return censored_txt
+#
+#
+# print(censor_string("Today is a Wednesday!", ["Today", "a"], "-"))
+# print(censor_string("The cow jumped over the moon.", ["cow", "over"], "*"))
+# print(censor_string("Why did the chicken cross the road ?", ["Did", "chicken", "road"], "*"))
