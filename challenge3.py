@@ -637,7 +637,7 @@
 #     if not bool(args):
 #         return [0, 0, 0, 0, 0, 0]
 #     int_type = str_type = bool_type = list_type = tuple_type = dictionary_type = 0
-# 
+#
 #     for data_type in args:
 #         if type(data_type) == int:
 #             int_type += 1
@@ -651,12 +651,55 @@
 #             tuple_type += 1
 #         elif type(data_type) == dict:
 #             dictionary_type += 1
-# 
+#
 #     return [int_type, str_type, bool_type, list_type, tuple_type, dictionary_type]
-# 
-# 
+#
+#
 # print(count_datatypes(1, 45, "Hi", False))
 # print(count_datatypes([10, 20], ("t", "Ok"), 2, 3, 1))
 # print(count_datatypes("Hello", "Bye", True, True, False, {"1": "One", "2": "Two"}, [1, 3], {"Brayan": 18}, 25, 23))
 # print(count_datatypes(4, 21, ("ES", "EN"), ("a", "b"), False, [1, 2, 3], [4, 5, 6]))
 # print(count_datatypes())
+
+
+# THURSDAY DEC, 15 2022
+
+# QUESTION 1
+
+# Create a function which takes in an encoded string and
+# returns a dictionary according to the following example:
+# Examples
+# parse_code("John000Doe000123") ➞ {
+#   "first_name": "John",
+#   "last_name": "Doe",
+#   "id": "123"
+# }
+# parse_code("michael0smith004331") ➞ {
+#   "first_name": "michael",
+#   "last_name": "smith",
+#   "id": "4331"
+# }
+# parse_code("Thomas00LEE0000043") ➞ {
+#   "first_name": "Thomas",
+#   "last_name": "LEE",
+#   "id": "43"
+# }
+
+# # SOLUTION
+# def parse_code(txt):
+#     obj = {
+#         "first_name": "",
+#         "last_name": "",
+#         "id": ""
+#     }
+#     for key in obj:
+#         for names in txt.split('0'):
+#             if bool(names):
+#                 obj[key] = names
+# 
+#     return obj
+# 
+# 
+# print(parse_code("Thomas00LEE0000043"))
+# print(parse_code("michael0smith004331"))
+# print(parse_code("John000Doe000123"))
