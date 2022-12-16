@@ -513,7 +513,7 @@
 
 # QUESTION 5
 
-
+#
 # Create a function that returns the majority vote in a list.
 # A majority vote is an element that occurs > N/2 times in a list
 # (where N is the length of the list).
@@ -526,23 +526,27 @@
 # If there is no majority element, return None.
 # If the list is empty, return None.
 
-# SOLUTION
+# # SOLUTION
 # def majority_vote(lst):
-#     first_iteration = lst.count(lst[0])
-#     output = None
-#     for vote in lst:
-#         if lst.count(vote) > first_iteration:
-#             first_iteration = lst.count(vote)
-#             output = vote
+#     if not lst:
+#         return None
+#     count = {}
+#     for el in lst:
+#         if el in count:
+#             count[el] += 1
 #         else:
-#             output=lst[0]
-#     return output
-#
+#             count[el] = 1
+#     for el, freq in count.items():
+#         if freq > len(lst) / 2:
+#             return el
+#     return None
+# 
+# 
 # print(majority_vote(["A", "A", "B"]))
 # print(majority_vote(["A", "A", "A", "B", "C", "A"]))
 # print(majority_vote(["A", "B", "B", "A", "C", "C"]))
 # print(majority_vote(["D", "B", "B", "A", "C", "C"]))
-
+# print(majority_vote([]))
 
 # MON DEC 12, 2022
 
@@ -562,9 +566,12 @@
 # # SOLUTION
 # def censor_string(txt, lst, char):
 #     censored_txt = ''
+#     for wrd in lst:
+#         lst.remove(wrd)
+#         lst.append(wrd.lower())
 #     for word in txt.split(' '):
 #         if word.lower() in lst:
-#             censored_txt += char * len(word.lower())
+#             censored_txt += char * len(word)
 #             censored_txt += ' '
 #         else:
 #             censored_txt += word
@@ -576,7 +583,6 @@
 # print(censor_string("Today is a Wednesday!", ["Today", "a"], "-"))
 # print(censor_string("The cow jumped over the moon.", ["cow", "over"], "*"))
 # print(censor_string("Why did the chicken cross the road ?", ["Did", "chicken", "road"], "*"))
-
 
 # TUE, DEC 13 2022
 
@@ -690,16 +696,19 @@
 #     obj = {
 #         "first_name": "",
 #         "last_name": "",
-#         "id": ""
+#         "id": "",
 #     }
+#     infor = []
+#     for value in txt.split('0'):
+#         if bool(value):
+#             infor.append(value)
+#     value = 0
 #     for key in obj:
-#         for names in txt.split('0'):
-#             if bool(names):
-#                 obj[key] = names
-# 
+#         obj[key] = infor[value]
+#         value += 1
 #     return obj
-# 
-# 
+#
+#
 # print(parse_code("Thomas00LEE0000043"))
 # print(parse_code("michael0smith004331"))
 # print(parse_code("John000Doe000123"))
