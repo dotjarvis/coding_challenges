@@ -209,32 +209,50 @@
 # # SOLUTION
 # def cup_swapping(swaps):
 #     position = 'B'
-#     placeholder = ''
-#     first_b = False
 #     for swap in swaps:
-#         if swap[-1] == 'B' and first_b == True and swap[0] == placeholder:
-#             position = swap[0]
-#             placeholder = swap[0]
-#         if swap[-1] == placeholder:
-#             position = swap[0]
-#             placeholder = swap[0]
-#
-#         if swap[-1] == 'B' and first_b == False:
-#             first_b = True
-#             position = swap[0]
-#             placeholder = swap[0]
-#
+#         if position in swap:
+#             position = swap.replace(position, "")
 #     return position
-#
 #
 # print(cup_swapping(["AB", "CA", "AB"]))
 # print(cup_swapping(["AB", "CA"]))
 # print(cup_swapping(["AC", "CA", "CA", "AC"]))
 # print(cup_swapping(["BA", "AC", "CA", "BC"]))
+# print(cup_swapping(["AC", "CA", "CA", "AC"]))
+# print(cup_swapping(["BA", "AC", "CA", "BC"]))
+
+
+# TUESDAY DEC 20,2022
+
+
+# QUESTION 1
+
+# In mathematics, the Fibonacci numbers, commonly denoted Fn,
+# form a sequence, called the Fibonacci sequence,
+# such that each number is the sum of the two preceding ones, starting from 0 and 1:
+# Fibonacci Sequence and Fibonacci Sequence 2
+# for n > 1
+# The beginning of the sequence is thus:
+# 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...
+# The function fib_fast(num) returns the fibonacci number Fn, of the given num as an argument.
+# Examples
+# fib_fast(5) ➞ 5
+# fib_fast(10) ➞ 55
+# fib_fast(20) ➞ 6765
+# fib_fast(50) ➞ 12586269025
+
+
+# # SOLUTION
+# def fib_fast(num):
+#     if num <= 1:
+#         return num
+#     a, b = 0, 1
+#     for i in range(num - 1):
+#         a, b = b, a + b
+#     return b
 #
 #
-#
-# print()
-# print(cup_swapping(["AB", "CA"])) # Output: C
-# print(cup_swapping(["AC", "CA", "CA", "AC"])) # Output: A
-# print(cup_swapping(["BA", "AC", "CA", "BC"])) # Output: C
+# print(fib_fast(5))
+# print(fib_fast(10))
+# print(fib_fast(20))
+# print(fib_fast(50))
