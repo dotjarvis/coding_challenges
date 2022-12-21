@@ -256,3 +256,137 @@
 # print(fib_fast(10))
 # print(fib_fast(20))
 # print(fib_fast(50))
+
+
+# QUESTION 2
+
+
+# You are given a list of integers and a target number.
+# Your task is to find all the pairs of integers in the list that add up to the target number.
+#
+# For example, if the list is [1, 2, 3, 4, 5] and the target number is 7,
+# the pairs that add up to 7 are (2, 5) and (3, 4).
+#
+# Write a function find_pairs(nums, target) that returns a list of all
+# the pairs of integers in nums that add up to target.
+# The pairs should be returned in the form of tuples.
+#
+# Example:
+#
+# find_pairs([1, 2, 3, 4, 5], 7) --> [(2, 5), (3, 4)]
+# find_pairs([-1000, -999], -1999) --> [(-1000, -999)]
+# find_pairs([1000, 999], 1999) --> [(1000, 999)]
+# find_pairs([1, 2, 3, 4, 5], 7) --> [(2, 5), (3, 4)]
+# find_pairs([1, 2, 3, 4, 5, 6], 7) --> [(1, 6), (2, 5)]
+# find_pairs([1, 2, 3, 4, 5], 10) --> [(2, 5), (3, 4)]
+# find_pairs([5, 5, 5, 5, 5], 10) -->[(5, 5), (5, 5), (5, 5)]
+
+
+# Notes:
+# The input list nums will contain at least two elements and at most 1000 elements.
+# The elements of nums will be unique and will be in the range from -1000 to 1000.
+# The target number will be in the range from -1000 to 1000.
+
+
+# # SOLUTION
+# def find_pairs(lst, target):
+#     all_pairs = []
+#     for list1 in lst:
+#         for list2 in lst:
+#             if list1 + list2 == target and (list2, list1) not in all_pairs:
+#                 all_pairs.append((list1, list2))
+#     return all_pairs
+#
+#
+# print(find_pairs([1, 2, 3, 4, 5], 7))
+# print(find_pairs([-1000, -999], -1999))
+# print(find_pairs([1000, 999], 1999))
+# print(find_pairs([1, 2, 3, 4, 5], 7))
+# print(find_pairs([1, 2, 3, 4, 5, 6], 7))
+# print(find_pairs([1, 2, 3, 4, 5], 10))
+# print(find_pairs([5, 5, 5, 5, 5], 10))
+
+
+# QUESTION 2
+
+# Write a function that takes in a list of integers and returns the
+# second-largest number in the list. Your function should return -1
+# if the list has fewer than two elements.
+# Your solution should have a time complexity of O(n) and should not modify the original list.
+# Example:
+# assert second_largest([1, 2, 3, 4, 5]) == 4
+# assert second_largest([5, 4, 3, 2, 1]) == 4
+# assert second_largest([1]) == -1
+# assert second_largest([]) == -1
+
+# # SOLUTION
+# def second_largest(numbers):
+#     if len(numbers) <= 2:
+#         return -1
+#     num2 = numbers[:]
+#     num2.sort()
+#     return num2[-2]
+#
+#
+# print(second_largest([1, 2, 3, 4, 5]))
+# print(second_largest([5, 4, 3, 2, 1]))
+# print(second_largest([1]))
+# print(second_largest([]))
+
+
+# QUESTION 3
+
+
+# You are given a list of integers nums and a positive integer k.
+# Your task is to partition the list into k contiguous sublists
+# such that the maximum sum of any sublist is minimized.
+
+# Write a function partition(nums, k) that returns the minimum possible maximum sum
+# of the k sublists.
+
+# EXAMPLES
+# partition([1, 4, 3, 2, 5, 6, 8, 7, 9], 3) -> 17
+# partition([1, 2, 3, 4, 5], 2) -> 9
+# partition([1, 2, 3, 4, 5], 3) -> 7
+# partition([1, 2, 3, 4, 5], 4) -> 6
+# partition([1, 2, 3, 4, 5], 5) -> 5
+# partition([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 2) -> 25
+# partition([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3) -> 17
+
+# Notes:
+# The input list nums will contain at least two elements and at most 1000 elements.
+# The elements of nums will be unique and will be in the range from -1000 to 1000.
+# The value of k will be in the range from 2 to len(nums).
+
+# SOLUTION
+# def partition(nums, k):
+#     def possible(x):
+#         cnt = 1
+#         cur = 0
+#         for n in nums:
+#             cur += n
+#             if cur > x:
+#                 cur = n
+#                 cnt += 1
+#         return cnt <= k
+#
+#     low = max(nums)
+#     high = sum(nums)
+#
+#     while low < high:
+#         mid = (low + high) // 2
+#         if possible(mid):
+#             high = mid
+#         else:
+#             low = mid + 1
+#
+#     return low
+#
+#
+# print(partition([1, 4, 3, 2, 5, 6, 8, 7, 9], 3))
+# print(partition([1, 2, 3, 4, 5], 2))
+# print(partition([1, 2, 3, 4, 5], 3))
+# print(partition([1, 2, 3, 4, 5], 4))
+# print(partition([1, 2, 3, 4, 5], 5))
+# print(partition([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 2))
+# print(partition([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3))
